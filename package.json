@@ -1,0 +1,16 @@
+{
+  "name": "hello-world-node-js-n-react",
+  "version": "0.0.1",
+  "main": "server/dist/app.js",
+  "scripts": {
+    "start": "cd server && npm i && npm run start"
+  },
+  "author": {
+    "name": "Catherine Lamonde",
+    "email": "sc.lamonde@gmail.com"
+  },
+  "license": "ISC",
+  "engines": {
+    "node": "20.x"
+  }
+}

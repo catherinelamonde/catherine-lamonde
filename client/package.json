@@ -1,0 +1,23 @@
+{
+  "name": "hello-world-node-js-n-react.client",
+  "version": "0.0.1",
+  "main": "dist/app.js",
+  "scripts": {
+    "start": "node dist/app.js",
+    "dev": "ts-node src/app.ts",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "npm run build"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Catherine Lamonde",
+    "email": "sc.lamonde@gmail.com"
+  },
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}
