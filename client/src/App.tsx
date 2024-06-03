@@ -1,26 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { FC, useState } from 'react';
+import { TextField, Button, Container } from '@mui/material';
 
-function App() {
+const App: FC = () => {
+  // État local du composant
+  const [searchText, setSearchText] = useState<string>('');
+
+  // Événements pour les changements dans le champ de texte
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchText(e.target.value);
+  };
+
+  // Événements pour la soumission du formulaire
+  const handleSubmit = async () => {
+    // Envoi de la requête POST à l'API
+    const response = await fetch('http://localhost:3000/api/search', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ searchText }),
+    });
+    // Récupération et affichage des données de la réponse
+    const data = await response.json();
+    console.log(data);
+  };
+
+  // Rendu du composant
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <TextField
+        label="Recherche de variété (nom latin)"
+        variant="outlined"
+        value={searchText}
+        onChange={handleChange}
+      />
+      <Button variant="contained" color="primary" onClick={handleSubmit}>
+        Rechercher
+      </Button>
+    </Container>
   );
-}
+};
 
 export default App;
