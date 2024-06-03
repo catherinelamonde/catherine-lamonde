@@ -13,7 +13,7 @@ const App: FC = () => {
   // Événements pour la soumission du formulaire
   const handleSubmit = async () => {
     // Envoi de la requête POST à l'API
-    const response = await fetch('http://localhost:3000/api/search', {
+    const response = await fetch('/api/search', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
