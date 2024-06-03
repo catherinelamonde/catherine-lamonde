@@ -1,7 +1,7 @@
 import express from 'express';
 import path from 'path';
 
-const app = express();
+const app: any = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware pour permettre à Express d'analyser les corps de requête au format JSON
@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '../../client/build')));
 
 // Endpoint API de recherche
-app.post('/api/search', async (req, res) => {
+app.post('/api/search', async (req: any, res: any) => {
   const { searchText } = req.body;
   // Remplacer cette partie par l'appel à l'API OpenAI
   const result = `Résultat fictif pour la recherche: ${searchText}`;
@@ -19,7 +19,7 @@ app.post('/api/search', async (req, res) => {
 });
 
 // Pour toutes les autres requêtes, renvoyer le fichier index.html du client
-app.get('*', (req, res) => {
+app.get('*', (req: any, res: any) => {
   res.sendFile(path.join(__dirname, '../../client/build', 'index.html'));
 });
 
