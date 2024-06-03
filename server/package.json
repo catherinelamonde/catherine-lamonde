@@ -4,8 +4,10 @@
   "main": "dist/app.js",
   "scripts": {
     "start": "node dist/app.js",
-    "dev": "ts-node src/app.ts",
+    "dev": "concurrently \"npm run watch\" \"npm run browser-sync\"",
     "build": "tsc",
+    "watch": "nodemon --watch src --ext ts,tsx,json --exec ts-node src/app.ts",
+    "browser-sync": "browser-sync start --proxy \"localhost:3000\" --port 3001 --files \"../../client/build/**/*.*\"",
     "heroku-postbuild": "cd ../client && npm i",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "npm run build"
@@ -21,6 +23,10 @@
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
+    "@types/node": "^20.14.0",
+    "browser-sync": "^3.0.2",
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.1.3",
     "ts-node": "^10.9.2"
   }
 }
